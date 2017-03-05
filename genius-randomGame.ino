@@ -1,33 +1,28 @@
-
 #include <Tone.h>
-Tone speakerpin; //Autofalante no pino 12
+Tone speakerpin; 
 int starttune[] = {NOTE_C4, NOTE_F4, NOTE_C4, NOTE_F4, NOTE_C4, NOTE_F4, NOTE_C4, NOTE_F4, NOTE_G4, NOTE_F4, NOTE_E4, NOTE_F4, NOTE_G4};
 int duration2[] = {100, 200, 100, 200, 100, 400, 100, 100, 100, 100, 200, 100, 500};
 int note[] = {NOTE_C4, NOTE_C4, NOTE_G4, NOTE_C5, NOTE_G4, NOTE_C5};
-int duration[] = {100, 100, 100, 300, 100, 300};
-int button[] = {2, 3, 4, 5};    // botões refente as cores azul, verde, amarelo e vermelho
-int ledpin[] = {8, 9, 10, 11};  // LEDs   refente as cores azul, verde, amarelo e vermelho
+int duration[] = {100, 100, 100, 300, 100, 300}; 
+int button[] = {2, 3, 4, 5};    // ขาใช้งานที่เชื่อมต่อกับปปุ่มกด
+int ledpin[] = {8, 9, 10, 11};  // ขาใช้งานที่แสดงไฟสีต่าง ๆ ของปุ่มกด
 int turn = 0;
 int buttonstate = 0;
-int randomArray[100];
+int randomArray[100]; 
 int inputArray[100];
-
 
 void setup()
 {
   Serial.begin(9600);
   Serial.println("init");
-  speakerpin.begin(12); // Autofalante no pino 12
+  speakerpin.begin(12); // ลำโพงต่อเข้าที่ขา 12
 
-  for (int x = 0; x < 4; x++) // LED pins are outputs
-  {
+  for (int x = 0; x < 4; x++) {
     pinMode(ledpin[x], OUTPUT);
   }
   
-  for (int x = 0; x < 4; x++)
-  {
-    pinMode(button[x], INPUT_PULLUP);
-//    digitalWrite(button[x], HIGH);  // habilitando os resistores de"pull-up" internos
+  for (int x = 0; x < 4; x++) {
+    pinMode(button[x], INPUT_PULLUP); // ทุกขาประกาศะพูลอัพเรียบร้อยแล้ว
   }
 
   randomSeed(analogRead(0));
